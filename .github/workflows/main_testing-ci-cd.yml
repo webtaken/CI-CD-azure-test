@@ -23,14 +23,14 @@ jobs:
       uses: docker/login-action@v2
       with:
         registry: https://index.docker.io/v1/
-        username: ${{ secrets.AzureAppService_ContainerUsername_a9e4e0e6947a4b70b73060f3b7a5e9a4 }}
-        password: ${{ secrets.AzureAppService_ContainerPassword_6be4bda85ece475fb1eaa54f6a326f1c }}
+        username: ${{ secrets.AzureAppService_ContainerUsername_3350b210dfff482fa6dc97f2ab708734 }}
+        password: ${{ secrets.AzureAppService_ContainerPassword_d76482333f77480195b4f1c5b32fab4c }}
 
     - name: Build and push container image to registry
       uses: docker/build-push-action@v3
       with:
         push: true
-        tags: index.docker.io/${{ secrets.AzureAppService_ContainerUsername_a9e4e0e6947a4b70b73060f3b7a5e9a4 }}/saul2000/ci-cd-test-azure:${{ github.sha }}
+        tags: index.docker.io/${{ secrets.AzureAppService_ContainerUsername_3350b210dfff482fa6dc97f2ab708734 }}/ci-cd-test-azure:${{ github.sha }}
         file: ./Dockerfile
 
   deploy:
@@ -47,5 +47,5 @@ jobs:
       with:
         app-name: 'testing-ci-cd'
         slot-name: 'production'
-        publish-profile: ${{ secrets.AzureAppService_PublishProfile_be1ae8b2d7f54700971478ae22017157 }}
-        images: 'index.docker.io/${{ secrets.AzureAppService_ContainerUsername_a9e4e0e6947a4b70b73060f3b7a5e9a4 }}/saul2000/ci-cd-test-azure:${{ github.sha }}'
+        publish-profile: ${{ secrets.AzureAppService_PublishProfile_61702155ea3e462595f8f5cf677f2788 }}
+        images: 'index.docker.io/${{ secrets.AzureAppService_ContainerUsername_3350b210dfff482fa6dc97f2ab708734 }}/ci-cd-test-azure:${{ github.sha }}'
