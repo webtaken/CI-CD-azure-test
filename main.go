@@ -19,7 +19,7 @@ func main() {
 	app := fiber.New()
 
 	app.Get("/", func(c *fiber.Ctx) error {
-		salutation := fmt.Sprintf("Hello, %s", config("USERNAME_APP", "Golang"))
+		salutation := fmt.Sprintf("Hello, my friend %s", config("USERNAME_APP", "Golang"))
 		return c.SendString(salutation)
 	})
 
